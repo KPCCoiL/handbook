@@ -479,9 +479,11 @@ sftp> \underline{exit}
 \end{commandline2} \noindent
 で{\tt sftp}を終了する。
 
-\section{Emacs を使う}
+\section{テキストエディタを使う}
 
-C言語のプログラムや \LaTeX のソースコードなど、テキスト形式のファイルの編集には、エディタと呼ばれるソフトを用いる。UNIXで代表的なものとしては、viやEmacsがある。本節では Emacs の使い方を紹介しよう。
+C言語のプログラムや \LaTeX のソースコードなど、テキスト形式のファイルの編集には、エディタと呼ばれるソフトを用いる。UNIXで代表的なものとしては、vi/VimやEmacsがある。本節では Emacs と Vim の使い方を紹介しよう。
+
+\subsection{Emacs}
 
 まず、Emacs を立ち上げるには
 \begin{commandline2}
@@ -492,7 +494,7 @@ C言語のプログラムや \LaTeX のソースコードなど、テキスト�
 \prompt \underline{emacs \&}
 \end{commandline2} \noindent
 としておけば、Emacs を別ウィンドウで立ち上げた後、元のターミナル内で別の作業を続けることができる。
-\subsection{チュートリアル}
+\subsubsection{チュートリアル}
 Emacs のコマンドの多くは
 \ctrl{なんとか} と \esc{なんとか}\footnote{\ovalbox{Esc} は \ovalbox{Control} と違い、一旦 \ovalbox{Esc} を押して離した後に、他のキーを押す。}にキー定義されている。
 
@@ -547,7 +549,7 @@ Emacs を使っていて何か困ったと思ったときは、まず \ctrl{g} (
 \label{tbl:emacs-command}
 \end{table}
 
-\subsection{編集作業}
+\subsubsection{編集作業}
 それでは Emacs の中から、何かファイルを編集してみよう。Emacs が立ち上がった状態からファイルを編集し始めるには、\ctrl{x} \ctrl{f} ({\bf find-file})
 とする。
 \begin{commandline2}
@@ -580,10 +582,38 @@ Wrote /home/s001500/trial.c
 
 さて、Emacs での作業も終ったので、Emacs から抜け出すことにしよう。Emacs から抜けるには、\ctrl{x} \ctrl{c} ({\bf save-buffers-kill-emacs})とする。
 
-\subsection{Emacs の様々なコマンド}
+\subsubsection{Emacs の様々なコマンド}
 Emacs には実に様々なコマンドがあるが、その中でも使用頻度の高いコマンドを表\ref{tbl:emacs-command}にまとめておく。コマンドは、\esc{x}\ \underline{コマンド}と打つことでも実行できる。
 
 ある領域を削除、移動、コピーしたいときには領域の先端でマークし、領域の終端までカーソルを移動した後、\ctrl{w}を押して領域を削除する。移動したいときには、さらに移動先までカーソルを持って行き、そこで\ctrl{y}を押す。コピーしたいときには、削除した直後に\ctrl{y}を押して復旧し、さらにコピー先までカーソルを持って行って、\ctrl{y}を押してコピーする。つまり一旦\ctrl{w}でためておいてから\footnote{実は\esc{w}だと削除しないでためるだけなので、こちらの方が楽である。}、\ctrl{y}であちこちにコピーする。また、\ctrl{k}を連続して使って消した場合も、\ctrl{y}でまとめてペーストすることができる。そのほか便利な機能としては、\esc{x} {\tt goto-line}で指定行に飛ぶなどが挙げられる。
+
+\subsection{Vim}
+Vim は Unix で伝統的に用いられてきたエディタ vi の改良版である。
+Vim を起動するには
+\begin{commandline2}
+\prompt \underline{vim}
+\end{commandline2}
+と入力する。
+この方法だとターミナルの中で Vim が立ち上がる。
+別ウィンドウ (GUI) が良ければ、 Linux 環境では
+\begin{commandline2}
+\prompt \underline{gvim}
+\end{commandline2}
+などとする。
+ただし、 gvim はデフォルトでインストールされていないことも多いので別途導入する必要があるかもしれない。
+
+\subsubsection{チュートリアル}
+Vim は他のエディタとは操作感がかなり異なるので、実際に手を動かしながら覚えるのが望ましい。
+ターミナルで
+\begin{commandline2}
+\prompt \underline{vimtutor}
+\end{commandline2}
+を実行すると、 Vim のチュートリアルが始まる。
+この内容を把握できれば十分に Vim を使い始められるであろう。
+
+Vim を使っていて何が何だか分からなくなった時は、とりあえず\ovalbox{Esc}を押すと、多くの場合ノーマルモードに戻れる。
+終了はノーマルモードで\texttt{:wqall}と打って改行すればよい。ここで、\ovalbox{:}はコマンド入力を始めるという意味、\texttt{wqall}が全てのバッファの内容をファイルに保存して Vim を終了するコマンドである。
+
 
 \section{Gnuplotを使う}
 \label{sec:unix:gnuplot}
